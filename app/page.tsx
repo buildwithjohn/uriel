@@ -2,13 +2,47 @@
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 
+/* ─── REAL DATA FROM NOTION / UPLOADS ─── */
 const WORKS = [
-  { id: 1, title: "StarHaven", category: "Brand Identity", year: "2024", accent: "#8B6440", img: "/work/logo-starhaven.jpg" },
-  { id: 2, title: "MadamCook", category: "Brand Identity", year: "2024", accent: "#6B7C5A", img: "/work/logo-madamcook.jpg" },
-  { id: 3, title: "Angelic Choral", category: "Logo Design", year: "2023", accent: "#8B6440", img: "/work/logo-angelic.jpg" },
-  { id: 4, title: "KB Threads", category: "Fashion Brand", year: "2023", accent: "#6B7C5A", img: "/work/logo-kbthreads.jpg" },
-  { id: 5, title: "AdeolaSarah", category: "Brand Identity", year: "2024", accent: "#8B6440", img: "/work/logo-adeolasarah.jpg" },
-  { id: 6, title: "Aunty Lara", category: "Logo Design", year: "2024", accent: "#6B7C5A", img: "/work/logo-auntylara.jpg" },
+  {
+    id: 1, title: "StarHaven", category: "Brand Identity", year: "2024",
+    accent: "#8B6440", img: "/starhaven_gradient.jpg",
+    body: "A timeless, aesthetic identity that connects with the target audience."
+  },
+  {
+    id: 2, title: "MadamCook", category: "Brand Identity", year: "2024",
+    accent: "#6B7C5A", img: "/Madamcook_tshirt_icon_-_logo.png",
+    body: "Celebrating Nigerian cuisine — premium identity for a culinary brand."
+  },
+  {
+    id: 3, title: "BiStantly", category: "Brand Identity", year: "2026",
+    accent: "#8B6440", img: "/Asset_64xg.png",
+    body: "On-demand logistics brand — bold icon, custom typography, orange palette."
+  },
+  {
+    id: 4, title: "Angelic Choral", category: "Logo Design", year: "2023",
+    accent: "#6B7C5A", img: "/Angelic_Choral_-_4.jpg",
+    body: "A unique logo mark telling the story of faith and music."
+  },
+  {
+    id: 5, title: "AdeolaSarah", category: "Brand Identity", year: "2024",
+    accent: "#8B6440", img: "/AdeolaSarah_logo_1.jpg",
+    body: "Clean, modern identity designed to attract and convert."
+  },
+  {
+    id: 6, title: "KB Threads", category: "Fashion Brand", year: "2023",
+    accent: "#6B7C5A", img: "/KB-Threads.jpg",
+    body: "Fashion brand identity — sharp, contemporary, distinctive."
+  },
+];
+
+const LOGO_EXTRAS = [
+  { title: "SBS", category: "Logo Design", img: "/SBS.jpg" },
+  { title: "Aunty Lara", category: "Logo Design", img: "/aunty_lara_logo_0.jpg" },
+  { title: "FLC", category: "Logo Design", img: "/FLC_-_3.jpg" },
+  { title: "Instagram Post Design", category: "Social Media", img: "/Instagram_post_-_3.png" },
+  { title: "Asset Design", category: "Brand Asset", img: "/Asset_14xg.png" },
+  { title: "Asset Design II", category: "Brand Asset", img: "/Asset_24xg.png" },
 ];
 
 const SERVICES = [
@@ -19,6 +53,7 @@ const SERVICES = [
   { num: "V", title: "Presentation Decks", body: "Clean, aesthetic, functional decks trusted by Cybernalytix, August Secrets, and others — making funding processes easy and ideas impossible to ignore." },
 ];
 
+/* ─── HOOKS ─── */
 function useInView(threshold = 0.08) {
   const ref = useRef<HTMLDivElement>(null);
   const [inView, setInView] = useState(false);
@@ -39,6 +74,7 @@ function Reveal({ children, delay = 0, y = 40 }: { children: React.ReactNode; de
   );
 }
 
+/* ─── MAIN ─── */
 export default function UrielSite() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -75,7 +111,6 @@ export default function UrielSite() {
         ::-webkit-scrollbar-thumb { background: #B8976A; }
         ::selection { background: #D4B896; color: #2C1F0E; }
 
-        /* Eased reveal */
         @keyframes fadeUp { from { opacity:0; transform:translateY(50px); } to { opacity:1; transform:translateY(0); } }
         @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
         @keyframes ticker { from { transform:translateX(0); } to { transform:translateX(-50%); } }
@@ -89,8 +124,8 @@ export default function UrielSite() {
         .nav-center { display:flex; gap:44px; }
         .nav-link { font-family:'Jost',sans-serif; font-size:11px; letter-spacing:0.18em; color:#7A6650; text-transform:uppercase; cursor:pointer; background:none; border:none; transition:color 0.3s; }
         .nav-link:hover { color:#2C1F0E; }
-        .nav-cta { font-family:'Jost',sans-serif; font-size:10px; letter-spacing:0.18em; color:#2C1F0E; text-decoration:none; text-transform:uppercase; border-bottom:1px solid #B8976A; padding-bottom:2px; transition:border-color 0.3s; }
-        .nav-cta:hover { border-color:#2C1F0E; }
+        .nav-cta { font-family:'Jost',sans-serif; font-size:10px; letter-spacing:0.18em; color:#F0EBE1; background:#2C1F0E; text-decoration:none; text-transform:uppercase; padding:10px 24px; transition:background 0.3s; }
+        .nav-cta:hover { background:#8B6440; }
         .hamburger { display:none; flex-direction:column; gap:6px; cursor:pointer; background:none; border:none; }
         .hamburger span { display:block; width:24px; height:1px; background:#2C1F0E; transition:all 0.3s; }
         .mob-menu { display:none; position:fixed; inset:0; z-index:199; background:#F0EBE1; flex-direction:column; align-items:center; justify-content:center; gap:40px; }
@@ -100,14 +135,15 @@ export default function UrielSite() {
         .hero { height:100vh; position:relative; display:flex; align-items:flex-end; overflow:hidden; }
         .hero-img { position:absolute; inset:0; }
         .hero-img img { object-fit:cover; object-position:center top; filter:brightness(0.88) contrast(1.05); }
-        .hero-veil { position:absolute; inset:0; background:linear-gradient(to top, rgba(26,16,6,0.72) 0%, rgba(26,16,6,0.2) 50%, transparent 100%); }
+        .hero-veil { position:absolute; inset:0; background:linear-gradient(to top, rgba(26,16,6,0.78) 0%, rgba(26,16,6,0.2) 50%, transparent 100%); }
         .hero-content { position:relative; z-index:2; padding:0 60px 72px; width:100%; }
         .hero-eyebrow { font-family:'Jost',sans-serif; font-size:10px; letter-spacing:0.35em; color:#D4B896; text-transform:uppercase; margin-bottom:20px; animation:fadeIn 1.2s ease forwards; }
-        .hero-name { font-family:'Italiana',serif; font-size:clamp(64px,8vw,112px); color:#F0EBE1; line-height:0.9; letter-spacing:0.01em; margin-bottom:28px; animation:fadeUp 1.2s cubic-bezier(.22,1,.36,1) 0.2s both; }
+        .hero-name { font-family:'Italiana',serif; font-size:clamp(64px,8vw,112px); color:#F0EBE1; line-height:0.9; letter-spacing:0.01em; margin-bottom:12px; animation:fadeUp 1.2s cubic-bezier(.22,1,.36,1) 0.2s both; }
         .hero-name em { font-style:italic; color:#D4B896; }
+        .hero-brand { font-family:'Italiana',serif; font-size:clamp(20px,2.5vw,32px); color:#D4B896; font-style:italic; letter-spacing:0.04em; margin-bottom:24px; animation:fadeUp 1.2s cubic-bezier(.22,1,.36,1) 0.3s both; }
         .hero-tagline { font-family:'Cormorant Garamond',serif; font-size:clamp(16px,1.6vw,20px); color:rgba(240,235,225,0.75); font-style:italic; font-weight:300; max-width:500px; line-height:1.7; margin-bottom:44px; animation:fadeUp 1.2s cubic-bezier(.22,1,.36,1) 0.4s both; }
-        .hero-actions { display:flex; align-items:center; gap:36px; animation:fadeUp 1.2s cubic-bezier(.22,1,.36,1) 0.55s both; flex-wrap:wrap; }
-        .btn-ghost { font-family:'Jost',sans-serif; font-size:10px; letter-spacing:0.22em; text-transform:uppercase; color:#F0EBE1; border:1px solid rgba(240,235,225,0.5); padding:14px 36px; background:transparent; cursor:pointer; transition:all 0.4s; }
+        .hero-actions { display:flex; align-items:center; gap:20px; animation:fadeUp 1.2s cubic-bezier(.22,1,.36,1) 0.55s both; flex-wrap:wrap; }
+        .btn-ghost { font-family:'Jost',sans-serif; font-size:10px; letter-spacing:0.22em; text-transform:uppercase; color:#F0EBE1; border:1px solid rgba(240,235,225,0.5); padding:14px 36px; background:transparent; cursor:pointer; transition:all 0.4s; text-decoration:none; display:inline-block; }
         .btn-ghost:hover { background:rgba(240,235,225,0.1); border-color:#F0EBE1; }
         .btn-solid { font-family:'Jost',sans-serif; font-size:10px; letter-spacing:0.22em; text-transform:uppercase; color:#2C1F0E; background:#D4B896; border:1px solid #D4B896; padding:14px 36px; cursor:pointer; transition:all 0.4s; text-decoration:none; display:inline-block; }
         .btn-solid:hover { background:#C9A87A; border-color:#C9A87A; }
@@ -121,6 +157,10 @@ export default function UrielSite() {
         .ticker-item { font-family:'Jost',sans-serif; font-size:9px; letter-spacing:0.28em; color:#B8976A; text-transform:uppercase; margin-right:64px; }
         .ticker-dot { color:#D4B896; margin-right:64px; font-size:8px; }
 
+        /* ─── SECTION LABEL ─── */
+        .section-label { font-family:'Jost',sans-serif; font-size:9px; letter-spacing:0.35em; color:#B8976A; text-transform:uppercase; display:flex; align-items:center; gap:14px; margin-bottom:24px; }
+        .section-label::before { content:''; width:28px; height:1px; background:#B8976A; flex-shrink:0; }
+
         /* ─── ABOUT ─── */
         .about-wrap { display:grid; grid-template-columns:1fr 1fr; min-height:92vh; }
         .about-left { position:relative; overflow:hidden; }
@@ -128,25 +168,32 @@ export default function UrielSite() {
         .about-left:hover img { transform:scale(1.04); }
         .about-caption { position:absolute; bottom:28px; left:28px; font-family:'Jost',sans-serif; font-size:8px; letter-spacing:0.2em; color:rgba(240,235,225,0.6); text-transform:uppercase; }
         .about-right { padding:80px 72px; display:flex; flex-direction:column; justify-content:center; background:#F0EBE1; }
-        .section-label { font-family:'Jost',sans-serif; font-size:9px; letter-spacing:0.35em; color:#B8976A; text-transform:uppercase; margin-bottom:28px; display:flex; align-items:center; gap:16px; }
-        .section-label::before { content:''; width:32px; height:1px; background:#B8976A; }
-        .about-heading { font-family:'Italiana',serif; font-size:clamp(44px,4.5vw,68px); color:#2C1F0E; line-height:1.05; margin-bottom:32px; }
+        .about-heading { font-family:'Italiana',serif; font-size:clamp(44px,4.5vw,68px); color:#2C1F0E; line-height:1.05; margin-bottom:8px; }
         .about-heading em { font-style:italic; color:#8B6440; }
-        .about-body { font-family:'Cormorant Garamond',serif; font-size:19px; font-weight:300; color:#6B5438; line-height:1.9; font-style:italic; margin-bottom:20px; }
-        .about-body-2 { font-family:'Jost',sans-serif; font-size:13px; font-weight:300; color:#9A8470; line-height:1.9; letter-spacing:0.02em; margin-bottom:52px; }
-        .stats-row { display:grid; grid-template-columns:repeat(3,1fr); gap:0; border-top:1px solid #D9CEBC; padding-top:40px; }
-        .stat { padding-right:32px; border-right:1px solid #D9CEBC; padding-left:0; }
-        .stat:first-child { padding-left:0; }
-        .stat:last-child { border-right:none; padding-right:0; padding-left:32px; }
-        .stat:nth-child(2) { padding-left:32px; }
+        .about-role { font-family:'Jost',sans-serif; font-size:10px; letter-spacing:0.28em; color:#B8976A; text-transform:uppercase; margin-bottom:32px; }
+        .about-body { font-family:'Cormorant Garamond',serif; font-size:19px; font-weight:300; color:#6B5438; line-height:1.9; font-style:italic; margin-bottom:16px; }
+        .about-body-2 { font-family:'Jost',sans-serif; font-size:13px; font-weight:300; color:#9A8470; line-height:1.9; letter-spacing:0.02em; margin-bottom:16px; }
+        .about-highlight { border-left:2px solid #B8976A; padding:14px 20px; margin:24px 0; background:#EDE5D6; }
+        .about-highlight p { font-family:'Jost',sans-serif; font-size:12px; font-weight:300; color:#5A4028; line-height:1.85; letter-spacing:0.02em; }
+        .skills-row { display:flex; flex-wrap:wrap; gap:7px; margin:24px 0 36px; }
+        .skill { font-family:'Jost',sans-serif; font-size:9px; letter-spacing:0.15em; text-transform:uppercase; color:#8B6440; border:1px solid #D4B896; padding:5px 13px; }
+        .stats-row { display:grid; grid-template-columns:repeat(3,1fr); gap:0; border-top:1px solid #D9CEBC; padding-top:36px; }
+        .stat { padding-right:28px; border-right:1px solid #D9CEBC; }
+        .stat:last-child { border-right:none; padding-right:0; padding-left:28px; }
+        .stat:nth-child(2) { padding-left:28px; }
         .stat-num { font-family:'Italiana',serif; font-size:52px; color:#2C1F0E; line-height:1; }
         .stat-label { font-family:'Jost',sans-serif; font-size:9px; letter-spacing:0.25em; color:#B8976A; text-transform:uppercase; margin-top:6px; }
+        .about-cta-row { display:flex; gap:14px; flex-wrap:wrap; margin-top:36px; }
+        .btn-dark { font-family:'Jost',sans-serif; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:#F0EBE1; background:#2C1F0E; border:1px solid #2C1F0E; padding:13px 30px; cursor:pointer; transition:all 0.35s; text-decoration:none; display:inline-block; }
+        .btn-dark:hover { background:#8B6440; border-color:#8B6440; }
+        .btn-outline { font-family:'Jost',sans-serif; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:#2C1F0E; background:transparent; border:1px solid #2C1F0E; padding:13px 30px; cursor:pointer; transition:all 0.35s; text-decoration:none; display:inline-block; }
+        .btn-outline:hover { background:#2C1F0E; color:#F0EBE1; }
 
         /* ─── CIRCLE MOTIF ─── */
         .circle-section { padding:100px 60px; background:#E8DFD0; position:relative; overflow:hidden; }
         .circle-deco { position:absolute; border-radius:50%; border:1px solid rgba(184,151,106,0.25); pointer-events:none; }
         .circle-words { display:flex; align-items:center; gap:48px; flex-wrap:wrap; }
-        .circle-quote { font-family:'Cormorant Garamond',serif; font-size:clamp(22px,3vw,36px); font-style:italic; font-weight:300; color:#4A3520; line-height:1.6; max-width:600px; }
+        .circle-quote { font-family:'Cormorant Garamond',serif; font-size:clamp(22px,3vw,36px); font-style:italic; font-weight:300; color:#4A3520; line-height:1.6; max-width:620px; }
         .circle-mark { width:80px; height:80px; border-radius:50%; border:1px solid #B8976A; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
         .circle-mark-inner { width:56px; height:56px; border-radius:50%; background:#B8976A; display:flex; align-items:center; justify-content:center; }
         .circle-mark svg { width:20px; height:20px; fill:#F0EBE1; }
@@ -156,18 +203,23 @@ export default function UrielSite() {
         .work-header { display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:64px; flex-wrap:wrap; gap:20px; }
         .work-heading { font-family:'Italiana',serif; font-size:clamp(40px,5vw,72px); color:#2C1F0E; line-height:0.95; }
         .work-heading em { font-style:italic; color:#8B6440; }
+
+        /* primary 6-card grid */
         .work-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2px; }
         .work-card { position:relative; aspect-ratio:4/5; overflow:hidden; cursor:pointer; background:#D9CEBC; }
         .work-card-img { position:absolute; inset:0; transition:transform 0.8s cubic-bezier(.22,1,.36,1); }
-        .work-card-img img { object-fit:cover; object-position:center top; filter:brightness(0.85); }
+        .work-card-img img { object-fit:cover; object-position:center; }
         .work-card:hover .work-card-img { transform:scale(1.06); }
-        .work-card-veil { position:absolute; inset:0; background:linear-gradient(to top, rgba(26,16,6,0.75) 0%, transparent 55%); transition:opacity 0.4s; }
+        .work-card-veil { position:absolute; inset:0; background:linear-gradient(to top, rgba(26,16,6,0.78) 0%, transparent 55%); transition:opacity 0.4s; }
         .work-card-body { position:absolute; bottom:0; left:0; right:0; padding:28px; z-index:2; transform:translateY(8px); transition:transform 0.4s cubic-bezier(.22,1,.36,1); }
         .work-card:hover .work-card-body { transform:translateY(0); }
         .work-card-num { font-family:'Jost',sans-serif; font-size:9px; letter-spacing:0.25em; color:rgba(212,184,150,0.7); margin-bottom:8px; }
-        .work-card-title { font-family:'Italiana',serif; font-size:22px; color:#F0EBE1; line-height:1.1; margin-bottom:6px; }
+        .work-card-title { font-family:'Italiana',serif; font-size:24px; color:#F0EBE1; line-height:1.1; margin-bottom:4px; }
         .work-card-cat { font-family:'Jost',sans-serif; font-size:9px; letter-spacing:0.2em; color:#D4B896; text-transform:uppercase; }
-        /* Placeholder tiles when no image */
+        .work-card-body-text { font-family:'Jost',sans-serif; font-size:11px; font-weight:300; color:rgba(240,235,225,0.7); line-height:1.6; margin-top:6px; max-height:0; overflow:hidden; transition:max-height 0.4s ease; letter-spacing:0.01em; }
+        .work-card:hover .work-card-body-text { max-height:60px; }
+
+        /* colour tiles as fallback BGs */
         .work-tile-1 { background:linear-gradient(135deg,#C4A882,#A08060); }
         .work-tile-2 { background:linear-gradient(135deg,#8B9A78,#6B7A58); }
         .work-tile-3 { background:linear-gradient(135deg,#B89878,#907858); }
@@ -175,54 +227,81 @@ export default function UrielSite() {
         .work-tile-5 { background:linear-gradient(135deg,#C8A888,#A88868); }
         .work-tile-6 { background:linear-gradient(135deg,#88A090,#687870); }
 
+        /* extra grid */
+        .work-sub-label { font-family:'Jost',sans-serif; font-size:9px; letter-spacing:0.32em; color:#B8976A; text-transform:uppercase; margin:64px 0 20px; display:flex; align-items:center; gap:14px; }
+        .work-sub-label::before { content:''; width:24px; height:1px; background:#B8976A; }
+        .extra-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2px; }
+        .extra-card { position:relative; aspect-ratio:1/1; overflow:hidden; background:#D9CEBC; cursor:pointer; }
+        .extra-card img { object-fit:cover; object-position:center; transition:transform 0.7s ease; }
+        .extra-card:hover img { transform:scale(1.07); }
+        .extra-card-info { position:absolute; bottom:0; left:0; right:0; padding:16px 18px; background:linear-gradient(to top, rgba(26,16,6,0.72), transparent); opacity:0; transition:opacity 0.35s; }
+        .extra-card:hover .extra-card-info { opacity:1; }
+        .extra-card-title { font-family:'Italiana',serif; font-size:18px; color:#F0EBE1; }
+        .extra-card-cat { font-family:'Jost',sans-serif; font-size:8px; letter-spacing:0.18em; color:#D4B896; text-transform:uppercase; margin-top:2px; }
+
         /* ─── SERVICES ─── */
         .services-section { background:#2C1F0E; padding:100px 60px; }
         .services-heading { font-family:'Italiana',serif; font-size:clamp(40px,5vw,68px); color:#F0EBE1; margin-bottom:72px; line-height:1; }
         .services-heading em { font-style:italic; color:#D4B896; }
         .services-list { display:flex; flex-direction:column; border-top:1px solid rgba(184,151,106,0.2); }
-        .service-row { display:grid; grid-template-columns:80px 1fr 1fr; gap:40px; padding:44px 0; border-bottom:1px solid rgba(184,151,106,0.15); align-items:center; transition:background 0.3s; cursor:default; }
+        .service-row { display:grid; grid-template-columns:80px 1fr 1fr; gap:40px; padding:44px 0; border-bottom:1px solid rgba(184,151,106,0.15); align-items:center; transition:padding-left 0.4s; cursor:default; }
         .service-row:hover { padding-left:12px; }
         .service-num { font-family:'Italiana',serif; font-size:40px; color:#B8976A; opacity:0.6; }
         .service-title { font-family:'Italiana',serif; font-size:clamp(24px,2.5vw,34px); color:#F0EBE1; }
         .service-body { font-family:'Jost',sans-serif; font-size:13px; font-weight:300; color:#9A8470; line-height:1.85; letter-spacing:0.02em; }
 
-        /* ─── FILM / FEATURED ─── */
+        /* ─── FEATURED ─── */
         .film-section { background:#E8DFD0; }
         .film-fullbleed { width:100%; aspect-ratio:21/9; position:relative; overflow:hidden; }
-        .film-fullbleed img { object-fit:cover; object-position:center 20%; filter:brightness(0.8) sepia(0.15); }
-        .film-overlay { position:absolute; inset:0; background:linear-gradient(to right, rgba(26,16,6,0.65) 0%, transparent 60%); display:flex; align-items:center; }
+        .film-fullbleed img { object-fit:cover; object-position:center 30%; filter:brightness(0.82) sepia(0.1); }
+        .film-overlay { position:absolute; inset:0; background:linear-gradient(to right, rgba(26,16,6,0.7) 0%, transparent 60%); display:flex; align-items:center; }
         .film-text { padding:60px; }
         .film-eyebrow { font-family:'Jost',sans-serif; font-size:9px; letter-spacing:0.35em; color:#D4B896; text-transform:uppercase; margin-bottom:20px; }
-        .film-title { font-family:'Italiana',serif; font-size:clamp(40px,5vw,68px); color:#F0EBE1; line-height:0.95; margin-bottom:24px; }
+        .film-title { font-family:'Italiana',serif; font-size:clamp(40px,5vw,68px); color:#F0EBE1; line-height:0.95; margin-bottom:12px; }
         .film-title em { font-style:italic; color:#D4B896; }
-        .film-meta { display:flex; gap:32px; margin-top:32px; }
+        .film-desc { font-family:'Cormorant Garamond',serif; font-size:16px; font-style:italic; color:rgba(240,235,225,0.7); max-width:360px; line-height:1.7; margin-bottom:28px; }
+        .film-meta { display:flex; gap:32px; flex-wrap:wrap; }
         .film-meta-item { text-align:left; }
         .film-meta-label { font-family:'Jost',sans-serif; font-size:8px; letter-spacing:0.25em; color:rgba(212,184,150,0.6); text-transform:uppercase; margin-bottom:4px; }
         .film-meta-val { font-family:'Cormorant Garamond',serif; font-size:16px; color:#F0EBE1; font-style:italic; }
         .film-strip { display:flex; }
         .film-strip-pane { flex:1; aspect-ratio:1; position:relative; overflow:hidden; }
-        .film-strip-pane img { object-fit:cover; object-position:center top; filter:sepia(25%) brightness(0.9); transition:filter 0.6s; }
+        .film-strip-pane img { object-fit:cover; object-position:center; filter:sepia(25%) brightness(0.9); transition:filter 0.6s; }
         .film-strip-pane:hover img { filter:sepia(5%) brightness(1); }
+
+        /* ─── TESTIMONIAL ─── */
+        .testi-section { background:#2C1F0E; padding:80px 60px; display:grid; grid-template-columns:3fr 2fr; gap:80px; align-items:center; }
+        .testi-mark { font-family:'Italiana',serif; font-size:80px; color:#B8976A; opacity:0.35; line-height:0.7; margin-bottom:24px; }
+        .testi-quote { font-family:'Cormorant Garamond',serif; font-size:clamp(18px,2vw,24px); font-style:italic; font-weight:300; color:#E8DFD0; line-height:1.85; margin-bottom:24px; }
+        .testi-attr { font-family:'Jost',sans-serif; font-size:10px; letter-spacing:0.22em; color:#B8976A; text-transform:uppercase; }
+        .avail-box { background:rgba(184,151,106,0.08); border:1px solid rgba(184,151,106,0.2); padding:32px; }
+        .avail-label { font-family:'Jost',sans-serif; font-size:8.5px; letter-spacing:0.28em; color:#B8976A; text-transform:uppercase; margin-bottom:12px; }
+        .avail-title { font-family:'Italiana',serif; font-size:26px; color:#F0EBE1; margin-bottom:8px; }
+        .avail-sub { font-family:'Jost',sans-serif; font-size:12px; font-weight:300; color:#9A8470; line-height:1.75; margin-bottom:24px; }
+        .avail-links { display:flex; flex-direction:column; gap:10px; }
+        .avail-link { font-family:'Jost',sans-serif; font-size:10px; letter-spacing:0.14em; color:#D4B896; text-decoration:none; text-transform:uppercase; display:flex; align-items:center; gap:10px; transition:gap 0.3s; }
+        .avail-link::before { content:''; width:18px; height:1px; background:#B8976A; flex-shrink:0; }
+        .avail-link:hover { gap:18px; color:#F0EBE1; }
 
         /* ─── CONTACT ─── */
         .contact-section { padding:100px 60px; background:#F0EBE1; }
-        .contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:100px; align-items:start; }
+        .contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:100px; }
         .contact-heading { font-family:'Italiana',serif; font-size:clamp(40px,5vw,68px); color:#2C1F0E; line-height:1; margin-bottom:28px; }
         .contact-heading em { font-style:italic; color:#8B6440; }
         .contact-body { font-family:'Cormorant Garamond',serif; font-size:19px; font-style:italic; font-weight:300; color:#7A6650; line-height:1.8; margin-bottom:44px; }
         .contact-links { display:flex; flex-direction:column; gap:14px; }
         .contact-link { font-family:'Jost',sans-serif; font-size:10px; letter-spacing:0.18em; color:#8B6440; text-decoration:none; text-transform:uppercase; display:flex; align-items:center; gap:12px; transition:gap 0.3s; }
-        .contact-link:hover { gap:20px; }
-        .contact-link::before { content:''; width:24px; height:1px; background:#B8976A; }
-        .form-field { margin-bottom:32px; }
-        .form-label { font-family:'Jost',sans-serif; font-size:8.5px; letter-spacing:0.25em; color:#B8976A; text-transform:uppercase; display:block; margin-bottom:10px; }
-        .form-input { font-family:'Jost',sans-serif; background:transparent; border:none; border-bottom:1px solid #D9CEBC; color:#2C1F0E; font-size:14px; padding:10px 0; width:100%; outline:none; transition:border-color 0.3s; letter-spacing:0.02em; }
+        .contact-link::before { content:''; width:22px; height:1px; background:#B8976A; flex-shrink:0; }
+        .contact-link:hover { gap:22px; color:#2C1F0E; }
+        .form-field { margin-bottom:30px; }
+        .form-label { font-family:'Jost',sans-serif; font-size:8.5px; letter-spacing:0.24em; color:#B8976A; text-transform:uppercase; display:block; margin-bottom:9px; }
+        .form-input { font-family:'Jost',sans-serif; background:transparent; border:none; border-bottom:1px solid #D9CEBC; color:#2C1F0E; font-size:14px; font-weight:300; padding:10px 0; width:100%; outline:none; transition:border-color 0.3s; letter-spacing:0.02em; }
         .form-input:focus { border-bottom-color:#8B6440; }
-        .form-input::placeholder { color:#C4B4A0; font-weight:300; }
-        .form-textarea { font-family:'Jost',sans-serif; background:transparent; border:none; border-bottom:1px solid #D9CEBC; color:#2C1F0E; font-size:14px; padding:10px 0; width:100%; outline:none; resize:none; height:88px; transition:border-color 0.3s; letter-spacing:0.02em; }
+        .form-input::placeholder { color:#C4B4A0; font-weight:200; }
+        .form-textarea { font-family:'Jost',sans-serif; background:transparent; border:none; border-bottom:1px solid #D9CEBC; color:#2C1F0E; font-size:14px; font-weight:300; padding:10px 0; width:100%; outline:none; resize:none; height:88px; transition:border-color 0.3s; letter-spacing:0.02em; }
         .form-textarea:focus { border-bottom-color:#8B6440; }
-        .form-textarea::placeholder { color:#C4B4A0; font-weight:300; }
-        .btn-submit { font-family:'Jost',sans-serif; font-size:10px; letter-spacing:0.22em; text-transform:uppercase; color:#F0EBE1; background:#2C1F0E; border:1px solid #2C1F0E; padding:16px 0; width:100%; cursor:pointer; margin-top:16px; transition:all 0.4s; }
+        .form-textarea::placeholder { color:#C4B4A0; font-weight:200; }
+        .btn-submit { font-family:'Jost',sans-serif; font-size:10px; letter-spacing:0.22em; text-transform:uppercase; color:#F0EBE1; background:#2C1F0E; border:1px solid #2C1F0E; padding:16px 0; width:100%; cursor:pointer; margin-top:16px; transition:background 0.35s; }
         .btn-submit:hover { background:#8B6440; border-color:#8B6440; }
 
         /* ─── FOOTER ─── */
@@ -230,16 +309,16 @@ export default function UrielSite() {
         .footer-top { display:flex; justify-content:space-between; align-items:flex-start; padding-bottom:36px; border-bottom:1px solid rgba(184,151,106,0.2); flex-wrap:wrap; gap:32px; }
         .footer-logo-name { font-family:'Italiana',serif; font-size:20px; color:#F0EBE1; letter-spacing:0.04em; }
         .footer-logo-sub { font-family:'Jost',sans-serif; font-size:7.5px; letter-spacing:0.3em; color:#B8976A; margin-top:3px; text-transform:uppercase; }
-        .footer-links { display:flex; gap:36px; flex-wrap:wrap; }
-        .footer-link { font-family:'Jost',sans-serif; font-size:10px; letter-spacing:0.18em; color:#7A6650; text-transform:uppercase; cursor:pointer; background:none; border:none; transition:color 0.3s; }
+        .footer-links { display:flex; gap:28px; flex-wrap:wrap; align-items:center; }
+        .footer-link { font-family:'Jost',sans-serif; font-size:10px; letter-spacing:0.18em; color:#7A6650; text-transform:uppercase; cursor:pointer; background:none; border:none; transition:color 0.3s; text-decoration:none; display:inline-block; }
         .footer-link:hover { color:#D4B896; }
-        .footer-bottom { display:flex; justify-content:space-between; align-items:center; padding-top:24px; flex-wrap:wrap; gap:12px; }
-        .footer-copy { font-family:'Jost',sans-serif; font-size:10px; letter-spacing:0.12em; color:#5A4A38; }
+        .footer-bottom { display:flex; justify-content:space-between; align-items:center; padding-top:24px; flex-wrap:wrap; gap:10px; }
+        .footer-copy { font-family:'Jost',sans-serif; font-size:10px; letter-spacing:0.1em; color:#5A4A38; }
         .footer-circles { display:flex; gap:6px; align-items:center; }
         .fc { border-radius:50%; }
 
         /* ─── MOBILE ─── */
-        @media (max-width: 768px) {
+        @media(max-width:768px){
           .u-nav { padding:20px 24px !important; }
           .u-nav.scrolled { padding:16px 24px !important; }
           .nav-center, .nav-cta { display:none !important; }
@@ -249,26 +328,34 @@ export default function UrielSite() {
           .about-wrap { grid-template-columns:1fr !important; }
           .about-left { min-height:56vw; }
           .about-right { padding:52px 24px !important; }
-          .stats-row { gap:0; }
-          .stat { padding:0 12px !important; }
+          .about-cta-row { flex-direction:column; }
+          .btn-dark, .btn-outline { width:100% !important; text-align:center; }
           .circle-section { padding:72px 24px !important; }
           .circle-words { flex-direction:column; gap:28px; }
           .work-section { padding:72px 24px !important; }
           .work-grid { grid-template-columns:1fr !important; }
           .work-card { aspect-ratio:3/2 !important; }
+          .extra-grid { grid-template-columns:repeat(2,1fr) !important; }
           .services-section { padding:72px 24px !important; }
           .service-row { grid-template-columns:48px 1fr !important; gap:16px; }
           .service-body { display:none; }
           .film-fullbleed { aspect-ratio:4/3 !important; }
           .film-strip { display:none !important; }
-          .film-text { padding:32px !important; }
-          .film-meta { flex-wrap:wrap; gap:20px; }
+          .film-text { padding:28px !important; }
+          .film-meta { flex-wrap:wrap; gap:16px; }
+          .testi-section { grid-template-columns:1fr !important; padding:60px 24px !important; gap:36px; }
           .contact-section { padding:72px 24px !important; }
-          .contact-grid { grid-template-columns:1fr !important; gap:52px !important; }
+          .contact-grid { grid-template-columns:1fr !important; gap:48px !important; }
           .footer { padding:40px 24px 28px !important; }
           .footer-top { flex-direction:column; gap:24px; }
           .footer-bottom { flex-direction:column; gap:8px; text-align:center; }
           .btn-ghost, .btn-solid { padding:13px 28px !important; font-size:9px !important; }
+        }
+        @media(max-width:480px){
+          .extra-grid { grid-template-columns:1fr !important; }
+          .stats-row { grid-template-columns:1fr !important; gap:24px; border-top:none; padding-top:0; }
+          .stat { border-right:none !important; padding:0 !important; border-bottom:1px solid #D9CEBC; padding-bottom:20px !important; }
+          .stat:last-child { border-bottom:none; }
         }
       `}</style>
 
@@ -278,7 +365,7 @@ export default function UrielSite() {
         {["Work","About","Services","Contact"].map(n => (
           <button key={n} className="nav-link" onClick={() => nav(n.toLowerCase())} style={{ fontSize:14,letterSpacing:"0.22em" }}>{n}</button>
         ))}
-        <a href="https://wa.me/2347068246856" target="_blank" rel="noreferrer" style={{ fontFamily:"'Jost',sans-serif",fontSize:11,letterSpacing:"0.22em",color:"#8B6440",textDecoration:"none",textTransform:"uppercase",borderBottom:"1px solid #B8976A",paddingBottom:2 }}>Hire Me</a>
+        <a href="https://wa.me/2347068246856" target="_blank" rel="noreferrer" style={{ fontFamily:"'Jost',sans-serif",fontSize:11,letterSpacing:"0.18em",color:"#8B6440",textDecoration:"none",textTransform:"uppercase",borderBottom:"1px solid #B8976A",paddingBottom:2 }}>Hire Me</a>
       </div>
 
       {/* ── NAV ── */}
@@ -299,14 +386,15 @@ export default function UrielSite() {
       {/* ── HERO ── */}
       <section id="hero" ref={heroRef} className="hero" style={{ opacity: heroOpacity }}>
         <div className="hero-img">
-          <Image src="/uriel-native.jpg" alt="Uriel Maforikan" fill priority />
+          <Image src="/74883030-5e51-413a-adde-e72319e07f20.png" alt="Uriel Maforikan" fill priority />
         </div>
         <div className="hero-veil" />
         <div className="hero-content">
-          <p className="hero-eyebrow">Graphic Designer · Brand Identity · Osun, Nigeria</p>
+          <p className="hero-eyebrow">Graphic Designer · Brand Identity Specialist · Osun, Nigeria</p>
           <h1 className="hero-name">
             Uriel<br /><em>Maforikan</em>
           </h1>
+          <p className="hero-brand">Visuals by Uriel</p>
           <p className="hero-tagline">
             I help brands stand out with unique, enduring identities — built on strategy, crafted with intention, designed to inspire trust and surpass the competition.
           </p>
@@ -325,7 +413,7 @@ export default function UrielSite() {
       <div className="ticker">
         <div className="ticker-track">
           {Array(4).fill(["Brand Identity","Logo Design","Marketing Design","Social Media Visuals","Presentation Decks","Available for Freelance","Osun · Nigeria"]).flat().map((t, i) => (
-            <span key={i} className={i % 7 === 6 ? "ticker-dot" : "ticker-item"}>{i % 7 === 6 ? "◦" : t}</span>
+            <span key={i} className={i % 8 === 7 ? "ticker-dot" : "ticker-item"}>{i % 8 === 7 ? "◦" : t}</span>
           ))}
         </div>
       </div>
@@ -345,12 +433,21 @@ export default function UrielSite() {
               <h2 className="about-heading">
                 Hi, I&apos;m<br /><em>Uriel</em> 👋🏾
               </h2>
+              <p className="about-role">Graphic Designer · Brand Identity · Video Editor</p>
               <p className="about-body">
-                An experienced graphic designer with over 3 years of expertise, committed to helping brands stand out with unique, enduring identities that inspire trust and surpass the competition. Based in Osun, Nigeria — available for remote work worldwide.
+                An experienced designer with over 3 years of expertise, committed to helping brands stand out with unique, enduring identities that inspire trust and surpass the competition.
               </p>
               <p className="about-body-2">
-                I help create a consistent professional experience using strategy, brand identity, and marketing design. Notable work includes brand identities for StarHaven and MadamCook, and I host The Great You Talk Podcast spotlighting inspiring stories of creative professionals.
+                Based in Nigeria, I collaborate remotely with teams and clients across the globe. Notable work includes brand identities for StarHaven, MadamCook, and BiStantly — and I host The Great You Talk Podcast spotlighting inspiring stories of creative professionals.
               </p>
+              <div className="about-highlight">
+                <p>I help create a consistent professional experience using strategy, brand identity and marketing designs — putting my clients ahead of their competitors.</p>
+              </div>
+              <div className="skills-row">
+                {["Brand Identity","Logo Design","Adobe Illustrator","Figma","Social Media Visuals","Print Design","Presentation Decks","Video Editing"].map(s => (
+                  <span key={s} className="skill">{s}</span>
+                ))}
+              </div>
               <div className="stats-row">
                 {[["3+","Years Experience"],["50+","Projects Delivered"],["∞","Ideas Created"]].map(([n,l]) => (
                   <div key={l} className="stat">
@@ -359,12 +456,16 @@ export default function UrielSite() {
                   </div>
                 ))}
               </div>
+              <div className="about-cta-row">
+                <a href="https://drive.google.com/file/d/1y-V2lNExxFCyR2m2uouSO7z4C8fEcqWK/view?usp=sharing" target="_blank" rel="noreferrer" className="btn-dark">Download Resume</a>
+                <a href="https://www.behance.net/uriel01" target="_blank" rel="noreferrer" className="btn-outline">Behance Portfolio</a>
+              </div>
             </Reveal>
           </div>
         </div>
       </section>
 
-      {/* ── CIRCLE MOTIF / PHILOSOPHY ── */}
+      {/* ── CIRCLE MOTIF ── */}
       <section className="circle-section">
         <div style={{ position:"absolute",top:-120,right:-120 }}>
           <div className="circle-deco" style={{ width:400,height:400,top:0,left:0 }} />
@@ -388,9 +489,9 @@ export default function UrielSite() {
       <section id="work" className="work-section">
         <div className="work-header">
           <Reveal>
-            <p className="section-label">Selected Work</p>
+            <p className="section-label">Portfolio</p>
             <h2 className="work-heading">
-              The<br /><em>Archive</em>
+              Selected<br /><em>Work</em>
             </h2>
           </Reveal>
           <Reveal delay={0.1}>
@@ -399,18 +500,37 @@ export default function UrielSite() {
             </a>
           </Reveal>
         </div>
+
+        {/* Primary 6 */}
         <div className="work-grid">
           {WORKS.map((w, i) => (
             <Reveal key={w.id} delay={i * 0.06}>
               <div className={`work-card work-tile-${i+1}`} onMouseEnter={() => setActiveWork(w.id)} onMouseLeave={() => setActiveWork(null)}>
                 <div className="work-card-img">
-                  <Image src={w.img} alt={w.title} fill onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }} />
+                  <Image src={w.img} alt={w.title} fill />
                 </div>
                 <div className="work-card-veil" />
                 <div className="work-card-body">
                   <p className="work-card-num">{String(i+1).padStart(2,"0")} · {w.year}</p>
                   <h3 className="work-card-title">{w.title}</h3>
                   <p className="work-card-cat">{w.category}</p>
+                  <p className="work-card-body-text">{w.body}</p>
+                </div>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+
+        {/* Extra logos & assets */}
+        <p className="work-sub-label">More Work</p>
+        <div className="extra-grid">
+          {LOGO_EXTRAS.map((e, i) => (
+            <Reveal key={i} delay={i * 0.05}>
+              <div className="extra-card">
+                <Image src={e.img} alt={e.title} fill />
+                <div className="extra-card-info">
+                  <div className="extra-card-title">{e.title}</div>
+                  <div className="extra-card-cat">{e.category}</div>
                 </div>
               </div>
             </Reveal>
@@ -422,7 +542,7 @@ export default function UrielSite() {
       <section id="services" className="services-section">
         <Reveal>
           <p className="section-label" style={{ color:"#B8976A" }}>
-            <span style={{ background:"#B8976A",display:"inline-block",width:32,height:1,verticalAlign:"middle",marginRight:16 }} />
+            <span style={{ background:"#B8976A",display:"inline-block",width:28,height:1,verticalAlign:"middle",marginRight:14 }} />
             What I Do
           </p>
           <h2 className="services-heading">Creative <em>Services</em></h2>
@@ -440,17 +560,18 @@ export default function UrielSite() {
         </div>
       </section>
 
-      {/* ── FEATURED WORK ── */}
+      {/* ── FEATURED ── */}
       <section className="film-section">
         <div className="film-fullbleed">
-          <Image src="/uriel-studio.jpg" alt="Visuals by Uriel" fill />
+          <Image src="/starhaven_gradient.jpg" alt="StarHaven Brand Identity" fill />
           <div className="film-overlay">
             <div className="film-text">
               <Reveal>
-                <p className="film-eyebrow">Featured Work</p>
-                <h2 className="film-title">StarHaven<br /><em>Brand Identity</em></h2>
+                <p className="film-eyebrow">Featured Case Study</p>
+                <h2 className="film-title">MadamCook<br /><em>Brand Identity</em></h2>
+                <p className="film-desc">Celebrating Nigerian cuisine — a premium identity built to make traditional dishes accessible to every home.</p>
                 <div className="film-meta">
-                  {[["Client","StarHaven"],["Scope","Brand Identity"],["Deliverable","Logo · System"],["Status","Completed"]].map(([l,v]) => (
+                  {[["Client","MadamCook"],["Duration","1 Week"],["Scope","Brand Identity"],["Tools","Illustrator · Figma"]].map(([l,v]) => (
                     <div key={l} className="film-meta-item">
                       <p className="film-meta-label">{l}</p>
                       <p className="film-meta-val">{v}</p>
@@ -462,12 +583,38 @@ export default function UrielSite() {
           </div>
         </div>
         <div className="film-strip">
-          {["/work/logo-starhaven.jpg","/work/logo-madamcook.jpg","/work/logo-angelic.jpg"].map((src,i) => (
+          {["/starhaven_gradient.jpg","/Madamcook_tshirt_icon_-_logo.png","/Asset_64xg.png"].map((src,i) => (
             <div key={i} className="film-strip-pane">
               <Image src={src} alt="Brand work" fill />
             </div>
           ))}
         </div>
+      </section>
+
+      {/* ── TESTIMONIAL + AVAILABILITY ── */}
+      <section className="testi-section">
+        <Reveal>
+          <div>
+            <div className="testi-mark">&ldquo;</div>
+            <p className="testi-quote">
+              Working with Uriel was fantastic. Communicates adequately and on time — and have you seen his work? Amazing.
+            </p>
+            <p className="testi-attr">Ademisoye Hannah — OLAD</p>
+          </div>
+        </Reveal>
+        <Reveal delay={0.15}>
+          <div className="avail-box">
+            <p className="avail-label">Current Status</p>
+            <p className="avail-title">Available for Freelance</p>
+            <p className="avail-sub">Open to brand identity design gigs — remote, contract, and full-time roles welcome. Based in Osun, Nigeria.</p>
+            <div className="avail-links">
+              <a href="https://www.instagram.com/vburielmaforikan" target="_blank" rel="noreferrer" className="avail-link">Instagram @vburielmaforikan</a>
+              <a href="https://www.behance.net/uriel01" target="_blank" rel="noreferrer" className="avail-link">Behance · uriel01</a>
+              <a href="mailto:maforikanuriel2017@gmail.com" className="avail-link">maforikanuriel2017@gmail.com</a>
+              <a href="https://wa.me/2347068246856" target="_blank" rel="noreferrer" className="avail-link">WhatsApp · 07068246856</a>
+            </div>
+          </div>
+        </Reveal>
       </section>
 
       {/* ── CONTACT ── */}
@@ -479,7 +626,7 @@ export default function UrielSite() {
               Enough about me.<br /><em>What about you?</em>
             </h2>
             <p className="contact-body">
-              Want to work on a project together? I promise I&apos;m a lot of fun to work with. Shoot me a message below or reach out directly — I respond promptly.
+              Want to work on a project together? I promise I&apos;m a lot of fun to work with. Shoot me a message — I respond promptly.
             </p>
             <div className="contact-links">
               <a href="mailto:maforikanuriel2017@gmail.com" className="contact-link">maforikanuriel2017@gmail.com</a>
@@ -526,8 +673,8 @@ export default function UrielSite() {
             {["Work","About","Services","Contact"].map(n => (
               <button key={n} className="footer-link" onClick={() => nav(n.toLowerCase())}>{n}</button>
             ))}
-            <a href="https://www.behance.net/uriel01" target="_blank" rel="noreferrer" style={{ fontFamily:"'Jost',sans-serif",fontSize:10,letterSpacing:"0.18em",color:"#7A6650",textDecoration:"none",textTransform:"uppercase",transition:"color 0.3s" }}>Behance</a>
-            <a href="https://www.instagram.com/vburielmaforikan" target="_blank" rel="noreferrer" style={{ fontFamily:"'Jost',sans-serif",fontSize:10,letterSpacing:"0.18em",color:"#7A6650",textDecoration:"none",textTransform:"uppercase",transition:"color 0.3s" }}>Instagram</a>
+            <a href="https://www.behance.net/uriel01" target="_blank" rel="noreferrer" className="footer-link">Behance</a>
+            <a href="https://www.instagram.com/vburielmaforikan" target="_blank" rel="noreferrer" className="footer-link">Instagram</a>
           </div>
         </div>
         <div className="footer-bottom">
