@@ -2,12 +2,12 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Uriel Maforikan — Visual Storyteller & Brand Designer",
-  description: "Uriel Maforikan is a visual storyteller, brand designer, and filmmaker based in Lagos, Nigeria. Creator of the Mr. Perfect Series.",
-  keywords: ["Uriel Maforikan", "visual storyteller", "brand designer", "filmmaker", "Lagos", "Nigeria"],
+  title: "Visuals by Uriel — Brand Identity & Graphic Design",
+  description: "Uriel Maforikan is a graphic designer and brand identity specialist based in Osun, Nigeria. Available for freelance brand identity, logo design, and marketing design.",
+  keywords: ["Visuals by Uriel", "Uriel Maforikan", "brand identity designer", "logo designer", "graphic designer", "Nigeria", "Osun"],
   openGraph: {
-    title: "Uriel Maforikan — Visual Storyteller & Brand Designer",
-    description: "Telling stories through light, frame, and form. Turning brands into worlds people want to live in.",
+    title: "Visuals by Uriel — Brand Identity & Graphic Design",
+    description: "I help brands stand out with unique, enduring identities — built on strategy, crafted with intention.",
     type: "website",
   },
 };
